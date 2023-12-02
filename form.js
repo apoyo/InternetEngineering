@@ -18,8 +18,7 @@ $(document).ready(function () {
         dataType: "json",
         encode: true,
       }).done(function (data) {
-    
-       
+
         console.log(data);
 
         if (!data.success) {
