@@ -30,7 +30,7 @@ $(document).ready(function () {
             $("#plec_form").addClass("has-error");
             $("#plec_form").append(
               '<div class="help-block">' + data.errors.plec + "</div>"
-   
+              console.log("HEllo wordl");
           );
           }
  
