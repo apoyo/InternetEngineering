@@ -25,7 +25,7 @@ $(document).ready(function () {
         if (!data.success) {
           
           if (data.errors.plec) {
-         console.log("Pierdlonik");
+  
 
             $("#plec_form").addClass("has-error");
             $("#plec_form").append(
