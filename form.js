@@ -110,7 +110,7 @@ $(document).ready(function () {
 
          $(".main").html('<div class="alert alert-success">' + data.message + "</div>").hide().fadeIn();
 
-
+         $(".register").empty();
 
          
         } 
