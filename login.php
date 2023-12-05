@@ -3,32 +3,19 @@
 require 'vendor/autoload.php';
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
-//$nazwa = $_POST['nazwa'];
-//$haselko = $_POST['haselko'];
-  //$ip = $_SERVER['REMOTE_ADDR'];
+$nazwa = $_POST['nazwa'];
+$haselko = $_POST['haselko'];
+$nazwa = 'tadek';
+$haselko = 'tadek';
+  $ip = $_SERVER['REMOTE_ADDR'];
 
   $errors = [];
 
   $data = [];
-$sec_key = '85ldofi';
-$payload = array(
-    'isd'=>'localhost',
-    'aud'=>'localhost',
-    'username'=> ' nazwa',
-    'password' => 'haselko',
-       
-    
-);
+  
+  
 
-    $encode = JWT::encode($payload, $sec_key, 'HS256' );
-    $header = apache_response_headers();
-    var_dump($header);
-    //echo $encode;
-   //$decode = JWT::decode ($encode, new key($sec_key,'HS256'));
-  // print_r($decode);
-
-
-    $mysqli =  new mysqli("localhost","root","", "baza");/*  */
+$mysqli =  new mysqli("localhost","root","", "baza");/*  */
 
      
 
@@ -44,9 +31,36 @@ $payload = array(
 
       
        
-            $mysqli->query("update users set  `logowanie` = '".time()."', `ip` ='".$ip."' WHERE login = '".$nazwa."'; ");
+            $mysqli->query("update users set  logowanie = '".time()."', ip ='".$ip."' WHERE login = '".$nazwa."'; ");
             $data['success'] = true;
             $data['message'] = 'Zalogowano!';
+
+
+            $sec_key = '851apoyo';
+            $payload = array(
+                'isd'=>'localhost',
+                'aud'=>'localhost',
+                'username'=> $nazwa,
+                'password' => $haselko,
+                   
+                
+            );
+            
+             $token = JWT::encode($payload,$sec_key, 'HS256') ;
+             setcookie("jwt_token",$token,time() +( 86400 * 1 ), "/");
+            
+            try {
+              $decoded = JWT::decode($token,new Key ($sec_key, 'HS256'));
+              $nazwa = $decoded->username;
+              $haselko = $decoded->password;
+                }catch (\Exception $e){
+                    
+                  echo "Błąd: ".$e->getMessage();
+                }
+
+
+
+
         }
 
         else{
@@ -73,6 +87,6 @@ $payload = array(
     
 
 
-        echo json_encode($data);
+        echo json_encode($data)
     
     ?>
