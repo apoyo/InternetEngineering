@@ -1,16 +1,39 @@
 <?php
 
+require 'vendor/autoload.php';
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+//$nazwa = $_POST['nazwa'];
+//$haselko = $_POST['haselko'];
+  //$ip = $_SERVER['REMOTE_ADDR'];
 
-$errors = [];
+  $errors = [];
 
-$data = [];
+  $data = [];
+$sec_key = '85ldofi';
+$payload = array(
+    'isd'=>'localhost',
+    'aud'=>'localhost',
+    'username'=> ' nazwa',
+    'password' => 'haselko',
+       
+    
+);
+
+    $encode = JWT::encode($payload, $sec_key, 'HS256' );
+    $header = apache_response_headers();
+    var_dump($header);
+    //echo $encode;
+   //$decode = JWT::decode ($encode, new key($sec_key,'HS256'));
+  // print_r($decode);
+
 
     $mysqli =  new mysqli("localhost","root","", "baza");/*  */
 
      
- $nazwa = $_POST['nazwa'];
-  $haselko = $_POST['haselko'];
-    $ip = $_SERVER['REMOTE_ADDR'];
+
+
+   
 
     if(mysqli_num_rows($mysqli->query("SELECT login  FROM users WHERE login = '".$nazwa."' ;")) > 0){
   
