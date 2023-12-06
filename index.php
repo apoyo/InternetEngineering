@@ -7,7 +7,9 @@
 
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="form.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 
@@ -63,7 +65,15 @@
         </form>
 
     </div>
-   
+   <div class="chat_user_list">
+
+
+   <ul id="userList" ></ul>
+
+
+
+
+   </div>
 
     <script>
     const registerpool = document.getElementById("registerpool");

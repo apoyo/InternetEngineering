@@ -1,3 +1,41 @@
+function getUsers(){
+
+$.ajax({
+  url: 'get_users.php',
+  type: 'GET',
+  dataType:'json',
+  success: function(data){
+    var userList = $('#userList');
+    userList.empty();
+userList.append('Nazwa użytkownika'+'<br><br>');
+    $.each(data, function(index,users){
+userList.append( '<li> ' + users.login +'</li>' +'');
+
+
+    });
+
+
+
+
+
+  }, 
+  error:function(xhr,status,error){
+    console.error('Wystąpił błąd podczas pobierania danych : '+ error)
+  }
+
+
+
+
+});
+
+
+
+
+
+
+}
+
+
 $(document).ready(function () {
     $("#registration").submit(function (event) {
       var formData = {
@@ -108,11 +146,21 @@ $(document).ready(function () {
         
          } else {
 
-         $(".main").html('<div class="alert alert-success">' + data.message + "</div>").hide().fadeIn();
+         $(".main").html('<div class="alert alert-success">' + data.message + "</div>").hide().fadeIn().fadeOut();
+         $(".main").html('<div class="alert alert-success">' + data.login_info + "</div>").hide().fadeIn();
+         
 
          $(".register").empty();
 
-         
+         getUsers();
+
+
+
+
+
+
+
+
         } 
 
 

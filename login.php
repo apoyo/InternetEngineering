@@ -5,8 +5,7 @@ use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 $nazwa = $_POST['nazwa'];
 $haselko = $_POST['haselko'];
-$nazwa = 'tadek';
-$haselko = 'tadek';
+
   $ip = $_SERVER['REMOTE_ADDR'];
 
   $errors = [];
@@ -34,7 +33,7 @@ $mysqli =  new mysqli("localhost","root","", "baza");/*  */
             $mysqli->query("update users set  logowanie = '".time()."', ip ='".$ip."' WHERE login = '".$nazwa."'; ");
             $data['success'] = true;
             $data['message'] = 'Zalogowano!';
-
+            $data['login_info'] = 'Jestes zalogowany jako '.$nazwa;
 
             $sec_key = '851apoyo';
             $payload = array(
