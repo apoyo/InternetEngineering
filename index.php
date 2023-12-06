@@ -65,11 +65,38 @@
         </form>
 
     </div>
-   <div class="chat_user_list">
+   <div class="chat_user_list" 
+
+>
 
 
    <ul id="userList" ></ul>
 
+
+
+
+   </div>
+   <div class="message_form" style=" display: inline-block;
+
+">
+<form action="message.php" method="post">
+<div id="message_story" style="
+ width: 70%;
+ height: 50%;  
+ border: 1px solid #d63131;
+ margin: 1px;
+ ">
+ <br>
+ <br>
+ <br>
+ <br>
+</div>
+<br>
+<input type="text" name="wiadomosc" id="wiadomosc">
+<button>Wyślij wiadomosc</button>
+
+
+</form>
 
 
 

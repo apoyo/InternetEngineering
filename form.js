@@ -9,7 +9,7 @@ $.ajax({
     userList.empty();
 userList.append('Nazwa użytkownika'+'<br><br>');
     $.each(data, function(index,users){
-userList.append( '<li> ' + users.login +'</li>' +'');
+userList.append( '<a><li> ' + users.login +'</li></a>' +'');
 
 
     });
