@@ -7,13 +7,14 @@ $.ajax({
   success: function(data){
     var userList = $('#userList');
     userList.empty();
+    let currentId = 1;
 userList.append('Nazwa użytkownika'+'<br><br>');
-    $.each(data, function(index,users){
-userList.append( '<a><li> ' + users.login +'</li></a>' +'');
+    $.each(data, function(index,users){ 
+      const userId = currentId++;
+userList.append( '<li ><a>  ' + users.login +'</a></li>' +'');
 
 
     });
-
 
 
 
@@ -186,4 +187,4 @@ $(document).ready(function () {
   });
 
 
-  
+

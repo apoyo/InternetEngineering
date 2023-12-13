@@ -13,8 +13,8 @@
 </head>
 
 
-<body>
-<div class="main">
+<body><div class="kontener">
+<div class="lewy"><div class="main">
         <form action="login.php" method="post" id="login_form">
             <fieldset>
             <div id="nazwa_login_form">    <input type="text" placeholder="Wpisz nazwe uzytkownika" name="nazwa" id="nazwa"> <br><br></div>
@@ -76,16 +76,19 @@
 
 
    </div>
+</div>
+
    <div class="message_form" style=" display: inline-block;
 
 ">
 <form action="message.php" method="post">
 <div id="message_story" style="
- width: 70%;
- height: 50%;  
+ width: 90%;
+ height: 90%;  
  border: 1px solid #d63131;
  margin: 1px;
- ">
+ "
+ >
  <br>
  <br>
  <br>
@@ -97,9 +100,7 @@
 
 
 </form>
-
-
-
+</div>
    </div>
 
     <script>
