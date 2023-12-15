@@ -34,7 +34,7 @@ $mysqli =  new mysqli("localhost","root","", "baza");/*  */
             $data['success'] = true;
             $data['message'] = 'Zalogowano!';
             $data['login_info'] = 'Jestes zalogowany jako '.$nazwa;
-
+            $data['login_nazwa'] = $nazwa;
             $sec_key = '851apoyo';
             $payload = array(
                 'isd'=>'localhost',

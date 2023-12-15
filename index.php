@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="form.js"></script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -70,7 +70,7 @@
 >
 
 
-   <ul id="userList" ></ul>
+   <ul id="userList" class="userList" ></ul>
 
 
 
@@ -81,7 +81,7 @@
    <div class="message_form" style=" display: inline-block;
 
 ">
-<form action="message.php" method="post">
+<form action="message.php" method="post" id="message_send_form">
 <div id="message_story" style="
  width: 90%;
  height: 90%;  
@@ -102,8 +102,12 @@
 </form>
 </div>
    </div>
-
+   <script src="form.js"></script>
     <script>
+
+
+
+
     const registerpool = document.getElementById("registerpool");
     const registerbutton = document.getElementById("registerbutton");
 

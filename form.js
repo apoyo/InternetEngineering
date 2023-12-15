@@ -1,3 +1,7 @@
+var OdKogo ;
+
+
+
 function getUsers(){
 
 $.ajax({
@@ -11,7 +15,7 @@ $.ajax({
 userList.append('Nazwa użytkownika'+'<br><br>');
     $.each(data, function(index,users){ 
       const userId = currentId++;
-userList.append( '<li ><a>  ' + users.login +'</a></li>' +'');
+userList.append( '<li data-user-id ="' + userId +'"><a>  ' + users.login +'</a></li>' +'');
 
 
     });
@@ -117,6 +121,9 @@ $(document).ready(function () {
       event.preventDefault();
     });
 
+
+
+
     $("#login_form").submit(function (event) {
       var formlogin = {
         nazwa: $("#nazwa").val(),
@@ -149,6 +156,7 @@ $(document).ready(function () {
 
          $(".main").html('<div class="alert alert-success">' + data.message + "</div>").hide().fadeIn().fadeOut();
          $(".main").html('<div class="alert alert-success">' + data.login_info + "</div>").hide().fadeIn();
+         OdKogo=data.login_nazwa;
          
 
          $(".register").empty();
@@ -171,7 +179,35 @@ $(document).ready(function () {
   
       event.preventDefault();
     });
+    $("#message_send_form").submit(function (event) {
+    
+      var selected_Items = document.getElementById("userList").getElementsByClassName("selected");
 
+      if(selected_Items.length>0){
+
+        var DoKogo = selected_Items[0].innerText;
+      }
+
+
+
+
+   var message_content = {
+    tresc: $("#wiadomosc").val(),
+   nadawca : OdKogo,
+   odbiorca : DoKogo,
+   }; 
+   console.log(message_content.tresc);
+    console.log(message_content.nadawca);
+  console.log(message_content.odbiorca);
+      $.ajax({
+        type: "POST",
+        url: "message.php",
+        data: message_content,
+        dataType: "json",
+        encode: true,
+      }).done(function (data) {
+        console.log(data);
+  
     
 
 
@@ -181,6 +217,25 @@ $(document).ready(function () {
 
 
 
+  
+  
+  
+        
+      });
+  
+      event.preventDefault();
+    });
+
+  
+    
+
+
+
+
+
+  
+
+
 
 
 
@@ -188,3 +243,50 @@ $(document).ready(function () {
 
 
 
+
+
+
+
+
+
+
+  
+
+
+  var userList = $('#userList');
+  userList.on('click', 'li', function() {
+    userList.find('li').removeClass('selected');
+  
+    $(this).addClass('selected');
+  
+    const userId = $(this).data('user-id');
+   // console.log('Clicked user with ID:', userId);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  });
+
+  
