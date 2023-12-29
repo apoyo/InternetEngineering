@@ -196,7 +196,12 @@ $(document).ready(function () {
    nadawca : OdKogo,
    odbiorca : DoKogo,
    }; 
-   console.log(message_content.tresc);
+   if(message_content.tresc.trim() !==''){
+
+    document.getElementById("wiadomosc").value = '';
+
+
+    console.log(message_content.tresc);
     console.log(message_content.nadawca);
   console.log(message_content.odbiorca);
       $.ajax({
@@ -207,21 +212,17 @@ $(document).ready(function () {
         encode: true,
       }).done(function (data) {
         console.log(data);
-  
-    
 
-
-
-
-
-
-
-
-  
+ 
   
   
         
       });
+    
+   } else {
+    alert("Pole tekstowe nie może być puste!");
+   }  
+
   
       event.preventDefault();
     });
@@ -260,6 +261,66 @@ $(document).ready(function () {
     $(this).addClass('selected');
   
     const userId = $(this).data('user-id');
+    var selected_Items = document.getElementById("userList").getElementsByClassName("selected");
+
+      if(selected_Items.length>0){
+
+        var DoKogo = selected_Items[0].innerText;
+      }
+   console.log('Nadawca', OdKogo);
+   console.log('Odbiorca', DoKogo);
+
+   var MsgData ={
+
+
+    nadawca: OdKogo,
+    odbiorca: DoKogo,
+
+
+  };
+
+  $.ajax({
+    url: 'get_messages.php',
+    type: 'GET',
+    data: MsgData,
+    dataType:'json',
+    success: function(data){
+      console.log(data);
+      console.log('COKOLWIEK');
+
+    displayMessages(data);
+  
+  
+  
+    }, 
+  
+  
+  
+  
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
    // console.log('Clicked user with ID:', userId);
 
 
@@ -289,4 +350,53 @@ $(document).ready(function () {
  
   });
 
+  function displayMessages(data) {
+
+   // if(data && Object.keys(data).length > 0 ){
+    document.getElementById("message_story").innerHTML = '';
+
+    
+      for (var i = 0; i < data.tresc.length; i++) {
+        var messageDiv = document.createElement("div");
   
+        //messageDiv.textContent = data.data_wyslania[i].data_wyslania + '.<br>.' + data.tresc[i].tresc;
+    // console.log(data.odbiorca[i].odbiorca);
+    // console.log('Odkogo to',OdKogo);
+   //  if (data.odbiorca[i].odbiorca == OdKogo) {
+//    console.log('dziala');
+//  }
+        // Dodaj klasę CSS w zależności od nadawcy
+
+        // Tworzenie elementu div dla daty
+        var dateDiv = document.createElement("div");
+        var FormattedDate =  moment(data.data_wyslania[i].data_wyslania).format('DD/MM/YYYY HH:mm:ss');
+        dateDiv.textContent = data.nadawca[i].nadawca + ' :: ' + moment(data.data_wyslania[i].data_wyslania).format('DD/MM/YYYY HH:mm:ss');
+        dateDiv.className = "date-message";
+
+        // Tworzenie elementu div dla treści wiadomości
+        var contentDiv = document.createElement("div");
+        contentDiv.textContent = data.tresc[i].tresc;
+        contentDiv.className = "content-message";
+
+
+        messageDiv.appendChild(dateDiv);
+        messageDiv.appendChild(contentDiv);
+
+        if (data.odbiorca[i].odbiorca == OdKogo) {
+            messageDiv.className = "left-message";
+        } else {
+            messageDiv.className = "right-message";
+        }
+    
+       
+        document.getElementById("message_story").appendChild(messageDiv);
+     
+    }
+    
+
+  
+    
+    
+    
+//    }
+    }

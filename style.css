@@ -49,3 +49,32 @@ height: 75%;
     width: 37%;
         text-align: center;
 }
+.left-message {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.right-message {
+    background-color: #d0d0d0;
+    padding: 10px;
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+.date-message {
+    font-size: smaller; /* Ustaw mniejszą czcionkę */
+    /* Dodaj tutaj inne style dla daty, jeśli są potrzebne */
+}
+
+/* Style dla treści wiadomości */
+.content-message {
+    font-size: larger; /* Ustaw większą czcionkę */
+    /* Dodaj tutaj inne style dla treści wiadomości, jeśli są potrzebne */
+}
+#message_story {
+    background-color: white;
+    border: 2px solid red;
+    padding: 10px; /* Dodaj dowolną ilość wypełnienia w pikselach */
+}

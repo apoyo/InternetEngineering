@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -78,7 +78,7 @@
    </div>
 </div>
 
-   <div class="message_form" style=" display: inline-block;
+   <div class="message_form"  id="message_form" style=" display: inline-block;
 
 ">
 <form action="message.php" method="post" id="message_send_form">
