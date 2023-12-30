@@ -4,19 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
     
-<div class="kontener"> 
-<div class="lewy"><div class="main">
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+    <div class="chat_user_list" 
+
+>
+
+
+   <ul id="userList" class="userList" ></ul>
+
+
+
+
+   </div>
+    </div>
+    <div class="col-sm">
+   <div class="lewy"><div class="main">
         <form action="login.php" method="post" id="login_form">
             <fieldset>
             <div id="nazwa_login_form">    <input type="text" placeholder="Wpisz nazwe uzytkownika" name="nazwa" id="nazwa"> <br><br></div>
@@ -67,22 +76,9 @@
         </form>
 
     </div>
-
-
-
-    <div class="chat_user_list" 
->
-
-
-   <ul id="userList" class="userList" ></ul>
-
-
-
-
-   </div>
-</div>
-
-   <div class="message_form"  id="message_form" style=" display: inline-block;
+    </div>
+    <div class="col-sm">
+    <div class="message_form"  id="message_form" style=" display: inline-block;
 
 ">
 <form action="message.php" method="post" id="message_send_form">
@@ -106,8 +102,10 @@
 
 </form>
 </div>
-   </div>
-   <script src="form.js"></script>
+    </div>
+  </div>
+</div>
+<script src="form.js"></script>
     <script>
 
 
@@ -123,7 +121,6 @@
 
 
     });
-    </script> 
+    </script>
 </body>
-
 </html>

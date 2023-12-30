@@ -1,4 +1,11 @@
-li{
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+/* li{
 
     list-style: none;
     border: 1px solid #d63131;
@@ -14,12 +21,33 @@ li:hover{
     margin: 6px;
     width: 37%;
         text-align: center;
-}
+} */
+
+
+li {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    border: 1px solid rgba(0, 123, 255, 0.125);
+    border-radius: 0.25rem;
+    margin-bottom: 0.125rem;
+  }
+  
+li:hover {
+    color: #0056b3;
+    background-color: rgba(0, 123, 255, 0.25);
+    border-color: rgba(0, 123, 255, 0.5);
+  }
+
 
 .kontener{
 
-    display: flex;
+    text-align: center;
     .lewy{
+        
         width: 50%;
     }
     .message_form{
@@ -29,7 +57,15 @@ height: 75%;
     }
 }
 
-.selected {
+
+.selected{
+
+
+    color: #0056b3;
+    background-color: rgba(0, 123, 255, 0.25);
+    border-color: rgba(0, 123, 255, 0.5);
+}
+/* .selected {
 
     border: 1px solid #4cd631;
 
@@ -48,7 +84,7 @@ height: 75%;
     margin: 6px;
     width: 37%;
         text-align: center;
-}
+} */
 .left-message {
     background-color: #f0f0f0;
     padding: 10px;
@@ -73,8 +109,17 @@ height: 75%;
     font-size: larger; /* Ustaw większą czcionkę */
     /* Dodaj tutaj inne style dla treści wiadomości, jeśli są potrzebne */
 }
-#message_story {
+/* #message_story {
     background-color: white;
     border: 2px solid red;
-    padding: 10px; /* Dodaj dowolną ilość wypełnienia w pikselach */
+    padding: 10px; /* Dodaj dowolną ilość wypełnienia w pikselach }
+    */
+
+
+.chat_user_list {
+
+
+
+
+    
 }

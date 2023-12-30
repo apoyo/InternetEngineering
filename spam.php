@@ -1,3 +1,122 @@
+<div class="kontener"> 
+<div class="lewy"><div class="main">
+        <form action="login.php" method="post" id="login_form">
+            <fieldset>
+            <div id="nazwa_login_form">    <input type="text" placeholder="Wpisz nazwe uzytkownika" name="nazwa" id="nazwa"> <br><br></div>
+            <div id="password_login_form"> <input type="password" placeholder="Wpisz haslo" name="haselko" autocomplete="on" id="haselko"><br><br></div>
+              <div id="login_message" class="login_form_button">   <button type="submit" class="login_button">
+                    Zaloguj się
+                </button></div> 
+                <a href="reminder.html">Zapomniałem hasła</a>
+            </fieldset>
+        </form>
+
+
+
+
+    </div>
+    <div class="register">
+
+        <input value="Rejestracja" type="submit" id="registerbutton">
+
+        <form action="process.php" method="POST" id="registration">
+            <fieldset id="registerpool" style="display: none">
+                <legend>Zarejestruj sie</legend>
+                <div id="plec_form" class="form_form">
+                    <p>Płeć : </p> &nbsp; kobieta<input type="radio" name="plec" id="plec_k" value="kobieta"> &nbsp;
+                    mężczyzna<input type="radio"  id="plec_m"  name="plec" value="mezczyzna"> <br><br>
+                </div>
+                <div id="dataur_form" class="form_form">
+                    Wybierz datę urodzenia <input type="date" id="dataur" name="dataur"><br><br></div>
+                <div id="login_form" class="form_form"><input type="text" placeholder="Wpisz nazwe uzytkownika"
+                        name="login" id="login"> <br><br></div>
+
+                <div id="mail_form" class="form_form"> <input type="email" placeholder="Wpisz e-mail" name="email"
+                        id="email"> <br><br></div>
+                <div id="password_form" class="form_form">
+                    <div id="password1_form" class="form_form"><input type="password" placeholder="Wpisz haslo"
+                            name="haslo1" id="haslo1" autocomplete="on"><br><br> </div>
+                    <div id="password2_form" class="form_form"> <input type="password"
+                            placeholder="Wpisz haslo ponownie" name="haslo2" id="haslo2" autocomplete="on"><br><br></div>
+                </div>
+                <label for="file-upload" class="custom-file-upload">
+                    Wgraj awatar
+                    <input type="file" name="avatar" id="file-upload" accept=".jpg, .jpeg, .png" />
+                </label><br><br>
+                <button type="submit" class="btn btn-success">
+                    Submit
+                </button>
+            </fieldset>
+        </form>
+
+    </div>
+   <div class="chat_user_list" 
+
+>
+
+
+   <ul id="userList" class="userList" ></ul>
+
+
+
+
+   </div>
+</div>
+
+   <div class="message_form"  id="message_form" style=" display: inline-block;
+
+">
+<form action="message.php" method="post" id="message_send_form">
+<div id="message_story" style="
+
+ "
+ >
+ <br>
+ <br>
+ <br>
+ <br>
+</div>
+<br>
+<input type="text" name="wiadomosc" id="wiadomosc" style=" display: none;
+
+" >
+<button style=" display: none;
+
+">Wyślij wiadomosc</button>
+
+
+</form>
+</div>
+   </div>
+   <script src="form.js"></script>
+    <script>
+
+
+
+
+    const registerpool = document.getElementById("registerpool");
+    const registerbutton = document.getElementById("registerbutton");
+
+    registerbutton.addEventListener("click", function() {
+
+
+        registerpool.style.display = "block";
+
+
+    });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
 var OdKogo ;
 
 
@@ -10,12 +129,12 @@ $.ajax({
   dataType:'json',
   success: function(data){
     var userList = $('#userList');
-    userList.empty();
+    $("#userList").empty();
     let currentId = 1;
-userList.append('Nazwa użytkownika'+'<br><br>');
+    $("#userList")..append('Nazwa użytkownika'+'<br><br>');
     $.each(data, function(index,users){ 
       const userId = currentId++;
-userList.append( '<li data-user-id ="' + userId +'"><a>  ' + users.login +'</a></li>' +'');
+      $("#userList").append( '<li data-user-id ="' + userId +'" ><a>  ' + users.login +'</a></li>' +'');
 
 
     });
@@ -191,7 +310,7 @@ $(document).ready(function () {
     });
     $("#message_send_form").submit(function (event) {
     
-      var selected_Items = document.getElementById("userList").getElementsByClassName("selected");
+ var selected_Items = document.getElementById("userList").getElementsByClassName("selected");
 
       if(selected_Items.length>0){
 
@@ -265,13 +384,13 @@ $(document).ready(function () {
 
 
   var userList = $('#userList');
-  userList.on('click', 'li', function() {
-    userList.find('li').removeClass('selected');
+  $('#userList').on('click', 'li', function() {
+    $('#userList').find('li').removeClass('selected');
   
     $(this).addClass('selected');
   
     const userId = $(this).data('user-id');
-    var selected_Items = document.getElementById("userList").getElementsByClassName("selected");
+ var selected_Items = document.getElementById("userList").getElementsByClassName("selected");
 
       if(selected_Items.length>0){
 
@@ -410,3 +529,41 @@ $(document).ready(function () {
     
 //    }
     }
+
+
+
+
+
+
+
+
+
+     <!-- Sidebar -->
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+        <div class="position-sticky">
+          <ul class="nav flex-column" id="userList">
+
+
+            <!-- <li class="nav-item">
+              <a class="nav-link active" href="#">
+                Dashboard
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                Orders
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                Products
+              </a>
+            </li> -->
+            <!-- Add more sidebar items as needed -->
+          </ul>
+        </div>
+      </nav>
+
